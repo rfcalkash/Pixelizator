@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QML/Main.qml</file>
+    </qresource>
+    <qresource prefix="/shaders">
+        <file>shaders/base.vert</file>
+        <file>shaders/base.frag</file>
+        <file>shaders/depth.frag</file>
+    </qresource>
+</RCC>
