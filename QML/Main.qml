@@ -176,7 +176,7 @@ Window {
                 currentIndex: pixelizatorOptions.palette
             }
 
-            Label { text: "Pixel Size" }
+            Label { text: "Pixel Size "+ pixelizatorOptions.pixelSize}
             Slider {
                 id: pixelSizeSlider
                 Layout.fillWidth: true
