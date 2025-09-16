@@ -1,8 +1,8 @@
+import QtQuick.Controls.Material as MD
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Window
-import QtQuick.Controls.Material
 import QtQuick.Dialogs
 import QtQuick3D
 
@@ -66,7 +66,7 @@ Window {
             Layout.fillWidth: true
             View3D {
                 id: view
-                property int speed: 30000
+                property int speed: 3000
                 anchors.fill: parent
                 // visible: false
                 //! [environment]
@@ -75,24 +75,34 @@ Window {
                     backgroundMode: SceneEnvironment.Color
                     effects: Effect{
                         property int pSize: pixelizatorOptions.pixelSize
-                        property double edgeAmount: 0.2
+                        property double edgeAmount: 0.01
                         property int pDepth: {
                             switch(paletteComboBox.currentIndex){
-                            case 0: return 16
-                            case 1: return 8
-                            case 2: return 4
+                            case 0: return 8
+                            case 1: return 4
+                            case 2: return 2
                             }
                         }
                         passes: [
                             Pass{
                                 shaders: [
                                     Shader{
-                                        shader: "qrc:/shaders/shaders/depth.frag"
+                                        shader: "qrc:/shaders/shaders/base.frag"
                                         stage: Shader.Fragment
                                     }
 
                                 ]
                             }
+                            // ,
+                            // Pass{
+                            //     shaders: [
+                            //         Shader{
+                            //             shader: "qrc:/shaders/shaders/depth.frag"
+                            //             stage: Shader.Fragment
+                            //         }
+
+                            //     ]
+                            // }
 
                         ]
                     }
@@ -110,6 +120,7 @@ Window {
                 DirectionalLight {
                     eulerRotation.x: -30
                     eulerRotation.y: -70
+                    ambientColor: "grey"
                 }
                 //! [light]
 
@@ -129,7 +140,7 @@ Window {
                     source: "#Sphere"
 
                     materials: [ PrincipledMaterial {
-                            baseColor: "blue"
+                            baseColor: "cyan"
                         }
                     ]
 
@@ -157,7 +168,7 @@ Window {
         }
         ColumnLayout {
             Layout.fillWidth: true
-            Layout.margins: Material.frameVerticalPadding
+            Layout.margins: MD.Material.frameVerticalPadding
 
             Text {
                 text: "Controls"

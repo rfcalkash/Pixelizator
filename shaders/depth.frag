@@ -36,10 +36,11 @@ void MAIN()
     if(is_edge){
         sumColor*=0.5;
     }
-    sumColor.r=floor(sumColor.r*pDepth)/pDepth;
-    sumColor.g=floor(sumColor.g*pDepth)/pDepth;
-    sumColor.b=floor(sumColor.b*pDepth)/pDepth;
-    sumColor.a=1;
+    sumColor=vec4(floor(sumColor.rgb*pDepth)/pDepth,1.0);
+    // sumColor.r=floor(sumColor.r*pDepth)/pDepth;
+    // sumColor.g=floor(sumColor.g*pDepth)/pDepth;
+    // sumColor.b=floor(sumColor.b*pDepth)/pDepth;
+    // sumColor.a=1;
 
     FRAGCOLOR=sumColor;
 
