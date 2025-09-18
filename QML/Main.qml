@@ -73,18 +73,11 @@ Window {
                 environment: SceneEnvironment {
                     clearColor: "skyblue"
                     backgroundMode: SceneEnvironment.Color
-                    effects: Effect{
-                        property int pSize: pixelizatorOptions.pixelSize
-                        property double edgeAmount: 0.1
-                        property int pDepth: {
-                            switch(paletteComboBox.currentIndex){
-                            case 0: return 8
-                            case 1: return 4
-                            case 2: return 2
-                            }
-                        }
-                        passes: [
-                            Pass{
+                    effects: [
+                        Effect{
+                            property int pSize: pixelizatorOptions.pixelSize
+                            property double edgeAmount: 0.005
+                            passes:Pass{
                                 shaders: [
                                     Shader{
                                         shader: "qrc:/shaders/shaders/base.frag"
@@ -93,19 +86,26 @@ Window {
 
                                 ]
                             }
-                            // ,
-                            // Pass{
-                            //     shaders: [
-                            //         Shader{
-                            //             shader: "qrc:/shaders/shaders/depth.frag"
-                            //             stage: Shader.Fragment
-                            //         }
+                        },
+                        Effect{
+                            property int pSize: pixelizatorOptions.pixelSize
+                            property int pDepth: {
+                                switch(paletteComboBox.currentIndex){
+                                case 0: return 8
+                                case 1: return 4
+                                case 2: return 2
+                                }
+                            }
+                            passes:Pass{
+                                shaders: [
+                                    Shader{
+                                        shader: "qrc:/shaders/shaders/depth.frag"
+                                        stage: Shader.Fragment
+                                    }
 
-                            //     ]
-                            // }
-
-                        ]
-                    }
+                                ]
+                            }
+                        }]
                 }
                 //! [environment]
 
