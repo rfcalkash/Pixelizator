@@ -75,7 +75,7 @@ Window {
                     backgroundMode: SceneEnvironment.Color
                     effects: Effect{
                         property int pSize: pixelizatorOptions.pixelSize
-                        property double edgeAmount: 0.01
+                        property double edgeAmount: 0.1
                         property int pDepth: {
                             switch(paletteComboBox.currentIndex){
                             case 0: return 8

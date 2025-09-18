@@ -17,13 +17,12 @@ bool hasEdge(vec2 cPos){
 void MAIN()
 {
     vec2 pPos=INPUT_UV*INPUT_SIZE;
-    float xStep=1.0/INPUT_SIZE.x;
-    float yStep=1.0/INPUT_SIZE.y;
+    int halfStep=pSize/2;
     bool is_edge=false;
-    for(int x=max(0,pPos.x-xStep);x<min(INPUT_SIZE.x,pPos.x+xStep);x++){
-        for(int y=max(0,pPos.y-yStep);x<min(INPUT_SIZE.y,pPos.y+yStep);y++){
-            if(sqrt(pow(float(x),2)+pow(float(y),2))<=float(pSize)/2){
-                if(hasEdge(vec2(x,y)/INPUR_SIZE)){
+    for(int x=max(0,int(pPos.x)-halfStep);x<=min(INPUT_SIZE.x,int(pPos.x)+halfStep);x++){
+        for(int y=max(0,int(pPos.y)-halfStep);y<=min(INPUT_SIZE.y,int(pPos.y)+halfStep);y++){
+            if(pow(x,2)+pow(y,2)<=pow(halfStep,2)){
+                if(hasEdge(vec2(x,y)/INPUT_SIZE)){
                     is_edge=true;
                     break;
                 }
@@ -33,6 +32,6 @@ void MAIN()
             break;
         }
     }
-    FRAGCOLOR=is_edge?vec4(0,0,0,1):texture(INPUT,INPUT_UV);
+    FRAGCOLOR=is_edge?texture(INPUT,INPUT_UV):vec4(0,0,0,1);
 
 }

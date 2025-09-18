@@ -1,3 +1,31 @@
+# Build artifacts
+build-*/
+*.pro.user
+*.pro.user.*
+*.qmlproject.user
+*.qmlproject.user.*
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+debug/
+release/
+tmp/
+*.bak
+*.orig
+
+# Qt Creator specific files
+.qtcreator/
+.qmake.stash
+
+# QML specific
+qmlcache_*.qmlc
+qml_debug/
 build/*
 *.user
 *.user.*
