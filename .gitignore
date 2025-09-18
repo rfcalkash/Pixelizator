@@ -27,6 +27,16 @@ tmp/
 qmlcache_*.qmlc
 qml_debug/
 build/*
-*.user
-*.user.*
+
+# CMake specific files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+_CPack_Packages/
+DartConfiguration.tcl
+Testing/
+.cmake/
+CMakeLists.txt.user*
 
